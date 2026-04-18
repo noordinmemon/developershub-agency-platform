@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome, <%= user.name %>!</h1>
+    <p>You’re logged in as <%= user.email %>
+    </p>
+
+    <div style="margin: 20px 0;">
+      <a href="/tasks">
+        <button>Go to Tasks</button>
+      </a>
+    </div>
+
+    <form action="/logout" method="POST">
+      <button style="background: #f44336;">Logout</button>
+    </form>
+  </div>
+</body>
+
+</html>

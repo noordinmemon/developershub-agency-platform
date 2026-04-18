@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My Tasks</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>My Tasks</h1>
+    <a href="/dashboard">← Back to Dashboard</a>
+
+    <form action="/tasks" method="POST" class="add-task-form">
+      <input type="text" name="title" placeholder="New task title" required>
+      <button>Add Task</button>
+    </form>
+
+    <% if (tasks.length===0) { %>
+      <p>No tasks yet. Add one above!</p>
+      <% } else { %>
+        <ul class="task-list">
+          <% tasks.forEach(task=> { %>
+            <li class="task-item <%= task.completed ? 'completed' : '' %>">
+              <p class="task-title">
+                <%= task.title %>
+              </p>
+
+              <div class="task-actions">
+                <form action="/tasks/<%= task._id %>?_method=PUT" method="POST" style="margin: 0;">
+                  <button class="btn-small">
+                    <%= task.completed ? 'Undo' : 'Complete' %>
+                  </button>
+                </form>
+
+                <form action="/tasks/<%= task._id %>?_method=DELETE" method="POST" style="margin: 0;">
+                  <button class="btn-small btn-danger">Delete</button>
+                </form>
+              </div>
+            </li>
+            <% }) %>
+        </ul>
+        <% } %>
+  </div>
+</body>
+
+</html>
