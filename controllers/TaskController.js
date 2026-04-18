@@ -1,4 +1,4 @@
-const Task = require('../models/Task');
+const Task = require('../models/task');
 
 // Only show tasks for logged in user
 exports.getTasks = async (req, res) => {
